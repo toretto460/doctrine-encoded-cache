@@ -1,0 +1,24 @@
+{
+    "name": "trt/doctrine-encrypted-cache",
+    "description": "Doctrine Encrypted Cache Drivers",
+    "require": {
+        "doctrine/cache": "~1.3.1",
+        "ext-mcrypt": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simone Di Maulo",
+            "email": "toretto460@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Trt\\Doctrine\\Cache\\": "src",
+            "Trt\\Doctrine\\Cache\\Tests\\": "tests"
+        }
+    }
+}
