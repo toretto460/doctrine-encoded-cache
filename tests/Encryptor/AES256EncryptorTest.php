@@ -19,7 +19,7 @@ class AES256EncryptorTest extends \PHPUnit_Framework_TestCase
      */
     public function itShouldEncryptAndDecryptDataConsistently($data)
     {
-        $encryptor = new AES256Encryptor('test_key');
+        $encryptor = new AES256Encryptor(new StubbedKeyProvider('test_key'));
 
         $encryptedData = $encryptor->encrypt($data);
 

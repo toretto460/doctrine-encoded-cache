@@ -8,6 +8,8 @@
 
 namespace Trt\Doctrine\Cache\Encryptor;
 
+use Trt\Doctrine\Cache\Key\KeyProvider;
+
 class AES256Encryptor implements Encryptor
 {
     /**
@@ -23,9 +25,9 @@ class AES256Encryptor implements Encryptor
     /**
      * {@inheritdoc}
      */
-    public function __construct($key)
+    public function __construct(KeyProvider $keyProvider)
     {
-        $this->secretKey = md5($key);
+        $this->secretKey = md5($keyProvider->getKey());
         $this->initializationVector = mcrypt_create_iv(
             mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB),
             MCRYPT_RAND
