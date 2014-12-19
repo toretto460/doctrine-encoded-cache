@@ -44,7 +44,7 @@ class AES256Encryptor implements Encryptor
                 mcrypt_encrypt(
                     MCRYPT_RIJNDAEL_256,
                     $this->secretKey,
-                    $data,
+                    serialize($data),
                     MCRYPT_MODE_ECB,
                     $this->initializationVector
                 )
@@ -57,13 +57,15 @@ class AES256Encryptor implements Encryptor
      */
     function decrypt($data)
     {
-        return trim(
-            mcrypt_decrypt(
-                MCRYPT_RIJNDAEL_256,
-                $this->secretKey,
-                base64_decode($data),
-                MCRYPT_MODE_ECB,
-                $this->initializationVector
+        return unserialize(
+            trim(
+                mcrypt_decrypt(
+                    MCRYPT_RIJNDAEL_256,
+                    $this->secretKey,
+                    base64_decode($data),
+                    MCRYPT_MODE_ECB,
+                    $this->initializationVector
+                )
             )
         );
     }

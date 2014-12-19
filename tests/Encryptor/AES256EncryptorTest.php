@@ -32,7 +32,10 @@ class AES256EncryptorTest extends \PHPUnit_Framework_TestCase
             [1],
             [null],
             ['string'],
-            [Text::$longText]
+            [Text::$longText],
+            [new \stdClass()],
+            [new \DateTime('now')],
+            [[new \stdClass(), new \DateTime('now')]]
         ];
     }
 
